@@ -1,0 +1,126 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Libre Bodoni', serif;
+      color: white;
+      background: url('Clair\ et\ Vert\ Paysagiste\ Lyon.jpg') no-repeat center/cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Overlay pour fondu vert en bas */
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(to top, #072621, transparent);
+      pointer-events: none;
+    }
+
+    /* NAVBAR */
+    header {
+      width: 100%;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      background: rgba(7, 38, 33, 0.6); /* transparent vert */
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #eebb6b;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+
+    .btn-contact {
+      background: #eebb6b;
+      color: #072621;
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn-contact:hover {
+      background: #d6a250;
+    }
+
+    /* HERO */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 5;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: #eebb6b;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    /* MOBILE LANDSCAPE ALERT */
+    .mobile-alert {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background: rgba(7, 38, 33, 0.95);
+      color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      z-index: 999;
+    }
+
+    .mobile-alert img {
+      max-width: 100px;
+      margin-bottom: 1rem;
+    }
+
+    @media screen and (max-width: 768px) and (orientation: landscape) {
+      .mobile-alert {
+        display: block;
+      }
+      header, .hero {
+        display: none;
+      }
+    }
