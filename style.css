@@ -27,7 +27,7 @@
 
     /* NAVBAR */
     header {
-      width: 100%;
+      width: 99%;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -37,6 +37,7 @@
       left: 0;
       z-index: 10;
       background: rgba(7, 38, 33, 0.6); /* transparent vert */
+      border-radius: 0px 0px 20px 20px;
     }
 
     .logo {
@@ -100,6 +101,62 @@
       margin-bottom: 2rem;
       max-width: 600px;
     }
+
+/* GALLERY */
+.gallery {
+  position: relative;
+  overflow: hidden;
+  background: #fffbea;
+  padding: 3rem 0;
+}
+
+.scrolling-wrapper {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+.shape {
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.shape img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cercle */
+.shape.circle {
+  border-radius: 50%;
+}
+
+/* Citron */
+.shape.leaf {
+  border-radius: 50% 0 50% 50%;
+  transform: rotate(-45deg);
+  overflow: hidden;
+}
+.shape.leaf img {
+  transform: rotate(45deg);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Animation horizontale */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
 
     /* MOBILE LANDSCAPE ALERT */
     .mobile-alert {
