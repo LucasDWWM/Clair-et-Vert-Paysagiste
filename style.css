@@ -158,6 +158,57 @@
   }
 }
 
+/* ABOUT */
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 3rem;
+  padding: 5rem 2rem;
+  background: #fffbea;
+  color: #072621;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+blockquote {
+  background: #eebb6b33;
+  padding: 1rem;
+  border-left: 4px solid #eebb6b;
+  font-style: italic;
+}
+
+blockquote cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.about-images {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.about-images .shape.leaf {
+  width: 200px;
+  height: 200px;
+}
+
+
     /* MOBILE LANDSCAPE ALERT */
     .mobile-alert {
       display: none;
