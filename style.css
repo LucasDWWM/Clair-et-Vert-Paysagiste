@@ -4,6 +4,30 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --vert: #072621;
+      --little-padding: 16px;
+      --padding-interne-sections: 96px;
+      --jaune: #eebb6b;
+      --heading: "Libre Bodoni", sans-serif;
+      --h1-size: 67px;
+      --noir: #111110;
+      --body: Montserrat, sans-serif;
+      --blanc: #fefbf6;
+      --body-size: 16px;
+      --h4-size: 26px;
+      --radius: 20px;
+      --vert-opacity-80: #1f3b36cc;
+      --padding: 24px;
+      --glassmorphisme: #f8fcf333;
+      --h2-size: 42px;
+      --h3-size: 26px;
+      --h1-size-mobile: 51.5px;
+      --h2-size-mobile: 32px;
+      --h3-size-mobile: 20px;
+      --body-mobile: 12.5px;
+  }
+
     body {
       font-family: 'Libre Bodoni', serif;
       color: white;
@@ -27,7 +51,8 @@
 
     /* NAVBAR */
     header {
-      width: 99%;
+      width: 98vw;
+      height: 91.2031px;
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -38,11 +63,13 @@
       z-index: 10;
       background: rgba(7, 38, 33, 0.6); /* transparent vert */
       border-radius: 0px 0px 20px 20px;
+      backdrop-filter: blur(10px);
     }
 
     .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
+      width: 100px;
+      margin-left: 5vw;
+      height: auto;
       color: #eebb6b;
     }
 
@@ -343,21 +370,31 @@ blockquote cite {
   gap: 2rem;
 }
 .value-item {
-  display: flex;
-  flex-direction: column;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
+  border-radius: var(--radius);
+  background-color: var(--glassmorphisme);
+  cursor: pointer;
+  border: 1px solid #f8fcf333;
+  flex-flow: column;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  padding: 16px;
+  display: flex;
+  color: #fff;
+
 }
 .value-item img {
   width: 60px;
   height: 60px;
   object-fit: contain;
+  color: #fff;
 }
 .value-item h3 {
   font-size: 1.1rem;
 }
 
-/* TESTIMONIALS / Avis clients */
+/* Avis clients */
 .testimonials {
   padding: 5rem 2rem;
   background: #072621;
