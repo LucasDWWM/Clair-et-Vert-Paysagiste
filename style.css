@@ -1,503 +1,134 @@
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; }
 
-    :root {
-      --vert: #072621;
-      --little-padding: 16px;
-      --padding-interne-sections: 96px;
-      --jaune: #eebb6b;
-      --heading: "Libre Bodoni", sans-serif;
-      --h1-size: 67px;
-      --noir: #111110;
-      --body: Montserrat, sans-serif;
-      --blanc: #fefbf6;
-      --body-size: 16px;
-      --h4-size: 26px;
-      --radius: 20px;
-      --vert-opacity-80: #1f3b36cc;
-      --padding: 24px;
-      --glassmorphisme: #f8fcf333;
-      --h2-size: 42px;
-      --h3-size: 26px;
-      --h1-size-mobile: 51.5px;
-      --h2-size-mobile: 32px;
-      --h3-size-mobile: 20px;
-      --body-mobile: 12.5px;
-  }
+:root {
+  --vert: #072621;
+  --jaune: #eebb6b;
+  --blanc: #fefbf6;
+  --glassmorphisme: #f8fcf333;
+  --radius: 20px;
+  --heading: "Libre Bodoni", serif;
+  --body: "Montserrat", sans-serif;
+}
 
-    body {
-      font-family: 'Libre Bodoni', serif;
-      color: white;
-      background: url('clair-vert-paysagiste-lyon.jpg') no-repeat center/cover;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+/* GLOBAL */
+body {
+  font-family: var(--body);
+  color: var(--vert);
+  background: var(--blanc);
+  line-height: 1.6;
+}
 
-    /* Overlay pour fondu vert en bas */
-    body::after {
-      content: "";
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 40%;
-      background: linear-gradient(to top, #072621, transparent);
-      pointer-events: none;
-    }
+/* HEADER */
+header {
+  width: 100%;
+  padding: 1rem 2rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position: fixed;
+  top:0; left:0;
+  z-index:100;
+  background: rgba(7, 38, 33, 0.6);
+  border-radius: 0 0 20px 20px;
+  backdrop-filter: blur(10px);
+}
+.logo img { height:50px; }
+nav ul { list-style:none; display:flex; gap:2rem; }
+nav a { color:white; text-decoration:none; font-weight:500; }
+.btn-contact {
+  background: var(--jaune); color: var(--vert);
+  padding:0.5rem 1.2rem; border-radius:20px;
+  font-weight:bold; text-decoration:none;
+}
+.btn-contact:hover { background:#d6a250; }
 
-    /* NAVBAR */
-    header {
-      width: 98vw;
-      height: 91.2031px;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 10;
-      background: rgba(7, 38, 33, 0.6); /* transparent vert */
-      border-radius: 0px 0px 20px 20px;
-      backdrop-filter: blur(10px);
-    }
-
-    .logo {
-      width: 100px;
-      margin-left: 5vw;
-      height: auto;
-      color: #eebb6b;
-    }
-
-    .logo img {
-      height: 50px;
-      width: auto;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-    }
-
-    .btn-contact {
-      background: #eebb6b;
-      color: #072621;
-      padding: 0.5rem 1.2rem;
-      border-radius: 20px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .btn-contact:hover {
-      background: #d6a250;
-    }
-
-    /* HERO */
-    .hero {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 1rem;
-      position: relative;
-      z-index: 5;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      color: #eebb6b;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      max-width: 600px;
-    }
+/* HERO */
+.hero {
+  height:100vh;
+  background:url("clair-vert-paysagiste-lyon.jpg") no-repeat center/cover;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+}
+.hero-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to bottom, rgba(7,38,33,0.2), rgba(7,38,33,0.8));
+}
+.hero-content {
+  position:relative; z-index:2;
+}
+.hero h1 {
+  font-family:var(--heading);
+  font-size:4rem;
+  margin-bottom:1rem;
+}
+.hero p {
+  background: rgba(7,38,33,0.6);
+  display:inline-block;
+  padding:0.5rem 1rem;
+  border-radius:10px;
+  margin-bottom:1.5rem;
+}
 
 /* GALLERY */
-.gallery {
-  position: relative;
-  overflow: hidden;
-  background: #fffbea;
-  padding: 3rem 0;
-}
-
-.scrolling-wrapper {
-  display: flex;
-  gap: 2rem;
-  width: max-content;
-  animation: scroll 30s linear infinite;
-}
-
-.shape {
-  width: 180px;
-  height: 180px;
-  flex-shrink: 0;
-  overflow: hidden;
-}
-
-.shape img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Cercle */
-.shape.circle {
-  border-radius: 50%;
-}
-
-/* Citron */
-.shape.lemon {
-  width: 180px;
-  height: 180px;
-  border-radius: 50% 0 50% 50%;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Base forme “lemon” */
-.shape.lemon {
-  width: 180px;
-  height: 180px;
-  border-radius: 50% 0 50% 50%;
-  overflow: hidden;
-  position: relative;
-  transform-origin: center center;
-  transition: transform 0.3s ease;
-}
-
-/* Base image dans lemon */
-.shape.lemon img {
-  width: 120%; /* un peu zoom pour couvrir les bords après rotation/skew */
-  height: 120%;
-  object-fit: cover;
-  position: absolute;
-  top: -10%;
-  left: -10%;
-  transition: transform 0.3s ease;
-}
-
-/* Variantes pour orientation différente + skew léger */
-.shape.lemon.variant-1 { /* comme “citron incliné vers la gauche” */
-  transform: rotate(-30deg) skew(-5deg, 5deg);
-}
-.shape.lemon.variant-1 img {
-  transform: rotate(30deg) skew(5deg, -5deg);
-}
-
-.shape.lemon.variant-2 { /* incliné vers la droite */
-  transform: rotate(30deg) skew(5deg, -5deg);
-}
-.shape.lemon.variant-2 img {
-  transform: rotate(-30deg) skew(-5deg, 5deg);
-}
-
-.shape.lemon.variant-3 { /* légèrement vers le haut */
-  transform: rotate(120deg) skew(5deg, 5deg);
-}
-.shape.lemon.variant-3 img {
-  transform: rotate(-120deg) skew(-5deg, -5deg);
-}
-
-.shape.lemon.variant-4 { /* légèrement vers le bas */
-  transform: rotate(-120deg) skew(-5deg, 5deg);
-}
-.shape.lemon.variant-4 img {
-  transform: rotate(120deg) skew(5deg, -5deg);
-}
-
-
-/* Profil dans le blockquote */
-.text-content {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.text-content img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%; 
-  object-fit: cover;
-  border: 2px solid #eebb6b;
-}
-
-/* SERVICES */
-.services {
-  padding: 5rem 2rem;
-  background: #fffbea;
-  color: #072621;
-  text-align: center;
-}
-
-.services h2 {
-  font-size: 2rem;
-  margin-bottom: 3rem;
-  color: #eebb6b;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-.service {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 2rem;
-  border-radius: 20px;
-  transition: transform 0.3s ease;
-}
-
-.service:hover {
-  transform: translateY(-10px);
-}
-
-.service .icon {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 1rem;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid #eebb6b;
-}
-
-.service .icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.service h3 {
-  margin-bottom: 1rem;
-  color: #fff;
-}
-
-
-
-/* Animation horizontale */
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
+.gallery { background: #fffbea; padding:3rem 0; overflow:hidden; }
+.scrolling-wrapper { display:flex; gap:2rem; width:max-content; animation:scroll 30s linear infinite; }
+.shape { width:180px; height:180px; flex-shrink:0; overflow:hidden; }
+.shape img { width:100%; height:100%; object-fit:cover; }
+.shape.circle { border-radius:50%; }
+.shape.lemon { border-radius:50% 0 50% 50%; position:relative; }
+.shape.lemon.variant-1 { transform:rotate(-30deg) skew(-5deg,5deg); }
+.shape.lemon.variant-2 { transform:rotate(30deg) skew(5deg,-5deg); }
+.shape.lemon.variant-3 { transform:rotate(120deg) skew(5deg,5deg); }
+.shape.lemon.variant-4 { transform:rotate(-120deg) skew(-5deg,5deg); }
+@keyframes scroll { from{transform:translateX(0);} to{transform:translateX(-50%);} }
 
 /* ABOUT */
-.about {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 3rem;
-  padding: 5rem 2rem;
-  background: #fffbea;
-  color: #072621;
-}
+.about { display:flex; gap:3rem; padding:5rem 2rem; background:#fffbea; }
+.about-text { flex:1; }
+.about-text h2 { font-family:var(--heading); font-size:2rem; margin-bottom:1rem; }
+blockquote { background:#eebb6b33; padding:1rem; border-left:4px solid var(--jaune); font-style:italic; }
+.text-content { display:flex; align-items:center; gap:1rem; margin-top:1rem; }
+.text-content img { width:60px; height:60px; border-radius:50%; object-fit:cover; border:2px solid var(--jaune); }
+.about-images { flex:1; display:flex; gap:1rem; justify-content:center; }
+.about-images .shape { width:200px; height:200px; }
 
-.about-text {
-  flex: 1;
-}
+/* SERVICES */
+.services { padding:5rem 2rem; background:#fffbea; text-align:center; }
+.services h2 { font-family:var(--heading); font-size:2rem; margin-bottom:3rem; color:var(--jaune); }
+.services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; }
+.service { padding:2rem; border-radius:20px; transition:transform 0.3s ease; }
+.service:hover { transform:translateY(-10px); }
+.service .icon { width:120px; height:120px; margin:0 auto 1rem; border-radius:50%; overflow:hidden; border:3px solid var(--jaune); }
+.service h3 { color:var(--vert); font-family:var(--heading); }
 
-.about-text h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
+/* VALUES */
+.values { padding:5rem 2rem; background:url("images/bg-nos-services-values.jpg") no-repeat center/cover; text-align:center; }
+.values h2 { font-family:var(--heading); font-size:2rem; margin-bottom:3rem; color:var(--jaune); }
+.values-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:2rem; }
+.value-item { background:var(--glassmorphisme); backdrop-filter:blur(8px); border-radius:var(--radius); padding:1rem; display:flex; flex-direction:column; align-items:center; color:white; }
+.value-item img { width:60px; height:60px; object-fit:contain; margin-bottom:0.5rem; }
 
-.about-text p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-}
-
-blockquote {
-  background: #eebb6b33;
-  padding: 1rem;
-  border-left: 4px solid #eebb6b;
-  font-style: italic;
-}
-
-blockquote cite {
-  display: block;
-  margin-top: 0.5rem;
-  font-weight: bold;
-}
-
-.about-images {
-  flex: 1;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.about-images .shape.lemon {
-  width: 200px;
-  height: 200px;
-}
-
-/* VALEURS (Nos engagements) */
-.values {
-  padding: 5rem 2rem;
-  background: url('images/bg-nos-services-values.jpg') no-repeat center/cover;
-  color: #072621;
-  text-align: center;
-}
-.values h2 {
-  font-size: 2rem;
-  margin-bottom: 3rem;
-  color: #eebb6b;
-}
-.values-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2rem;
-}
-.value-item {
-  grid-column-gap: 16px;
-  grid-row-gap: 16px;
-  border-radius: var(--radius);
-  background-color: var(--glassmorphisme);
-  cursor: pointer;
-  border: 1px solid #f8fcf333;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  padding: 16px;
-  display: flex;
-  color: #fff;
-
-}
-.value-item img {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  color: #fff;
-}
-.value-item h3 {
-  font-size: 1.1rem;
-}
-
-/* Avis clients */
-.testimonials {
-  padding: 5rem 2rem;
-  background: #072621;
-  color: #fffbea;
-  text-align: center;
-}
-.testimonials h2 {
-  font-size: 2rem;
-  margin-bottom: 3rem;
-  color: #eebb6b;
-}
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-.testimonial {
-  background: rgba(255,255,255,0.1);
-  padding: 2rem;
-  border-radius: 20px;
-  font-style: italic;
-}
-.testimonial span {
-  display: block;
-  margin-top: 1rem;
-  font-weight: bold;
-  font-style: normal;
-}
+/* TESTIMONIALS */
+.testimonials { padding:5rem 2rem; background:var(--vert); color:var(--blanc); text-align:center; }
+.testimonials h2 { font-family:var(--heading); font-size:2rem; margin-bottom:3rem; color:var(--jaune); }
+.testimonials-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; }
+.testimonial { background:rgba(255,255,255,0.1); padding:2rem; border-radius:20px; font-style:italic; }
 
 /* FOOTER */
-.site-footer {
-  background: #072621;
-  color: #fffbea;
-  padding: 4rem 2rem 2rem;
-}
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-}
-.footer-section h3 {
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-  color: #eebb6b;
-}
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-.footer-section ul li {
-  margin-bottom: 0.5rem;
-}
-.footer-section ul li a {
-  color: #fffbea;
-  text-decoration: none;
-}
-.footer-section about img {
-  width: 150px;
-  margin-bottom: 1rem;
-}
-.social-icons a {
-  margin-right: 0.5rem;
-}
-.social-icons img {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-}
-.footer-bottom {
-  text-align: center;
-  margin-top: 2rem;
-  border-top: 1px solid #eebb6b55;
-  padding-top: 1rem;
-  font-size: 0.9rem;
-}
+.site-footer { background:var(--vert); color:var(--blanc); padding:4rem 2rem 2rem; text-align:center; }
+.footer-logo { font-family:var(--heading); font-size:3rem; color:var(--jaune); margin-bottom:0.5rem; }
+.footer-slogan { font-size:1.2rem; color:var(--jaune); }
+.footer-bottom { margin-top:2rem; border-top:1px solid #eebb6b55; padding-top:1rem; font-size:0.9rem; }
 
-
-
-    /* MOBILE LANDSCAPE ALERT */
-    .mobile-alert {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      background: rgba(7, 38, 33, 0.95);
-      color: white;
-      padding: 2rem;
-      border-radius: 10px;
-      z-index: 999;
-    }
-
-    .mobile-alert img {
-      max-width: 100px;
-      margin-bottom: 1rem;
-    }
-
-    @media screen and (max-width: 768px) and (orientation: landscape) {
-      .mobile-alert {
-        display: block;
-      }
-      header, .hero {
-        display: none;
-      }
-    }
+/* MOBILE ALERT */
+.mobile-alert { display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(7,38,33,0.95); color:white; padding:2rem; border-radius:10px; z-index:999; text-align:center; }
+.mobile-alert img { max-width:100px; margin-bottom:1rem; }
+@media screen and (max-width:768px) and (orientation:landscape){
+  .mobile-alert{display:block;}
+  header,.hero{display:none;}
+}
