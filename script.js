@@ -7,3 +7,22 @@ document.addEventListener('DOMContentLoaded', function() {
     lemon.classList.add(randomVariant);
   });
 });
+
+const track = document.querySelector('.carousel-track');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+let index = 0;
+
+nextBtn.addEventListener('click', () => {
+  if (index < track.children.length - 1) {
+    index++;
+    track.style.transform = `translateX(-${index * 320}px)`;
+  }
+});
+
+prevBtn.addEventListener('click', () => {
+  if (index > 0) {
+    index--;
+    track.style.transform = `translateX(-${index * 320}px)`;
+  }
+});
