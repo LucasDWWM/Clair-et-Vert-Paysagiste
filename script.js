@@ -1,28 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
   const lemons = document.querySelectorAll('.shape.lemon');
-  const variants = ['variant-1', 'variant-2', 'variant-3', 'variant-4'];
+  const variants = ['rotate(-30deg)', 'rotate(30deg)', 'rotate(120deg)', 'rotate(-120deg)'];
 
   lemons.forEach(lemon => {
-    const randomVariant = variants[Math.floor(Math.random() * variants.length)];
-    lemon.classList.add(randomVariant);
+    const random = variants[Math.floor(Math.random() * variants.length)];
+    lemon.style.transform = random;
   });
 });
 
-const track = document.querySelector('.carousel-track');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-let index = 0;
-
-nextBtn.addEventListener('click', () => {
-  if (index < track.children.length - 1) {
-    index++;
-    track.style.transform = `translateX(-${index * 320}px)`;
-  }
-});
-
-prevBtn.addEventListener('click', () => {
-  if (index > 0) {
-    index--;
-    track.style.transform = `translateX(-${index * 320}px)`;
-  }
+// Init Swiper
+const swiper = new Swiper(".mySwiper", {
+  loop: true,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  effect: "coverflow", // donne un effet 3D comme ton screenshot
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: "auto",
+  coverflowEffect: {
+    rotate: 20,
+    stretch: 0,
+    depth: 200,
+    modifier: 1,
+    slideShadows: true,
+  },
 });
